@@ -1,0 +1,18 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Карточка проекта{% endblock %}
+
+{% block content %}
+<div class="feature">
+    <p>Количество студентов: {{ request.session.student_count|default:"Не указано" }}</p>
+    <p>Направление: {{ request.session.direction_name|default:"Не указано" }}</p>
+    <p>Группа: {{ request.session.group_name|default:"Не указано" }}</p>
+    <p>Курс: {{ request.session.course_name|default:"Не указано" }}</p>
+    <p>Выбранные технологии:</p>
+    <ul>
+        {% for tech_id in request.session.selected_technologies|default:"[]" %}
+            <li>{{ tech_id }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+body{
+    background: aliceblue;
+}
+aside{
+    float: left;
+    background: #BDCFE3;
+    width: 15%;
+    padding: 1%;
+    height: 100vh;
+    color: aliceblue;
+    border-right: 1px solid #9DB5D4;
+}
+
+aside img{
+    width: 30px;
+    float: right;
+}
+
+aside ul{
+    margin-top: 50%;
+    list-style: none;
+}
+
+aside ul li{
+    color: aliceblue;
+    display: block;
+    margin-top: 20%;
+    transition: transform .6s ease;
+    font-size: 20px;
+}
+
+aside ul a{
+    text-decoration: none;
+}
+
+aside ul li:hover, aside ul a:hover{
+    color: #9DB5D4;
+    transform: scale(1.05) ;
+}
+
+main .feature{
+    float: left;
+    color: black;
+    margin-top: 40px;
+    text-align: center;
+    width: 75%;
+}
+
+main .feature h1{font-size: 50px;}
+
+form{
+    margin-left: 240px;
+}
+
+.btn-success {
+    background: #5283B0;
+    border: none;
+    float: right;
+
+}
+
+.btn-success:hover {
+    background: #9DB5D4;
+}
+
+.bold-text {
+    font-weight: bold;
+    font-size: 1em;
+    float: left;
+}
+
+.background-block {
+    padding: 80px;
+    border-radius: 20px;
+    background-color: #D5E3F0;
+    width: 800px;
+}
+

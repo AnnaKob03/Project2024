@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Карточка проекта{% endblock %}
+
+{% block content %}
+    <h1>Карточка проекта</h1>
+    <p>Карточка проекта</p>
+    <div class="feature background-block" >
+    <p>Количество студентов: {{ student_count }}</p>
+    <p>Направление: {{ direction_name }}</p>
+    <p>Группа: {{ group_name }}</p>
+    <p>Курс: {{ course_name }}</p>
+    <p>Выбранные технологии:</p>
+    <ul>
+        {% for tech_id in selected_technologies %}
+            <li>{{ tech_id }}</li>
+        {% endfor %}
+    </ul>
+    <p>Ошибка: {{ error }}</p>
+    </div>
+{% endblock %}

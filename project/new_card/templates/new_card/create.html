@@ -1,0 +1,70 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Новый проект{% endblock %}
+
+{% block content %}
+
+<div class="feature">
+   <div class="feature">
+        <form class="background-block" method="post" action="">
+            {% csrf_token %}
+            <span class="bold-text">Тема проекта</span>
+            {{ card_form.topic_name }}<br>
+            <span class="bold-text">Количество студентов</span>
+            {{ card_form.number_of_students }}<br>
+            <span class="bold-text">Технологии</span>
+            <select  name="technology_name" class="form-control django-select2" multiple="multiple">
+                {% for technology in technology_choices %}
+                    <option value="{{ technology.technology_code }}">{{ technology.technology_name }}</option>
+                {% endfor %}
+            </select><br>
+            <span class="bold-text">Направление</span>
+            <select name="direction_name" class="form-control">
+                <option value="" selected></option>
+                {% for direction in direction_choices %}
+                    <option value="{{ direction.direction_name }}">{{ direction.direction_name }}</option>
+                {% endfor %}
+            </select><br>
+            <span class="bold-text">Курс</span>
+            <select name="course" class="form-control">
+                <option value="" selected></option>
+                {% for course in unique_student_courses %}
+                    <option value="{{ course.course }}">{{ course.course }}</option>
+                {% endfor %}
+            </select><br>
+            <span class="bold-text">Группа</span>
+            <select name="group_number" class="form-control">
+                <option value="" selected></option>
+                {% for group in unique_student_groups %}
+                    <option value="{{ group.group_number }}">{{ group.group_number }}</option>
+                {% endfor %}
+            </select><br>
+            <span>{{ error }}</span>
+            <button class="btn btn-success" type="submit">Создать команду</button>
+        </form>
+ </div>
+<script>
+$(document).ready(function() {
+    $('.django-select2').select2({
+        placeholder: "Выберите опции", // Плейсхолдер для пустого состояния
+        multiple: true, // Разрешение мультивыбора
+        ajax: {
+            url: '{% url "technology-options" %}', // URL для AJAX запросов
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    search: params.term // Поисковый запрос от пользователя
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.items.map(item => ({ id: item.id, text: item.name }))
+                };
+            }
+        }
+    });
+});
+</script>
+
+{% endblock %}
